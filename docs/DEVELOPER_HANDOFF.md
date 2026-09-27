@@ -83,4 +83,4 @@ npm run dev
 - Server health status is cached in memory by URL/passcode pair; Settings can force a connection test.
 - Live model candidates are cached by the server as the preferred candidate after one succeeds. Fallback only occurs for the recognized unavailable-model close condition before any response content.
 - Cost shown in the app is an estimate based on the client browser's recorded requests, not a billing export; authoritative spend lives in Google Cloud or AI Studio billing.
-- The source tree does not currently contain a Git repository. Set the intended GitHub remote before pushing this handoff and application.
+- The application source and handoff are versioned in the `Archit-bit/articulate` GitHub repository; generated build output, archives, and local environment files are excluded.
