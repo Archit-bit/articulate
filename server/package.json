@@ -1,0 +1,16 @@
+{
+  "name": "articulate-server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Serves the Articulate app and relays AI calls to Vertex AI (Google Cloud) so no API key is needed in the browser.",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@google/genai": "^2.24.0",
+    "express": "^5.1.0",
+    "ws": "^8.18.0"
+  }
+}

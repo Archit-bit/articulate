@@ -1,0 +1,25 @@
+{
+  "name": "articulate",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "package": "npm run build && cd dist && rm -f ../articulate-site.zip && zip -qr ../articulate-site.zip . && echo 'Created articulate-site.zip \u2014 upload it in AWS Amplify (Deploy without Git).'",
+    "package:gcp": "rm -f articulate-gcp.zip && zip -qr articulate-gcp.zip . -x 'node_modules/*' 'server/node_modules/*' 'dist/*' '.env.local' '*.zip' '.DS_Store' && echo 'Created articulate-gcp.zip \u2014 upload it to Cloud Shell and run deploy-gcp.sh.'"
+  },
+  "dependencies": {
+    "@google/genai": "^2.24.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "typescript": "^5.8.0",
+    "vite": "^6.3.0"
+  }
+}

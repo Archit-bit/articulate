@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Articulate technical architecture</title>
+  <desc id="desc">System architecture, audio and AI data flows, persistence, API routes, security boundary, and deployment options for Articulate.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101b2d"/><stop offset="1" stop-color="#17253c"/></linearGradient>
+    <linearGradient id="client" x2="1" y2="1"><stop stop-color="#163d4b"/><stop offset="1" stop-color="#1b5660"/></linearGradient>
+    <linearGradient id="server" x2="1" y2="1"><stop stop-color="#49365f"/><stop offset="1" stop-color="#614376"/></linearGradient>
+    <linearGradient id="cloud" x2="1" y2="1"><stop stop-color="#244263"/><stop offset="1" stop-color="#2c5c80"/></linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1l9 5-9 5" fill="none" stroke="#b5c7db" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1l9 5-9 5" fill="none" stroke="#60d5b0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <style>
+      text{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#edf3fa}.title{font-size:34px;font-weight:700;letter-spacing:-.5px}.sub{font-size:15px;fill:#a9bacd}.label{font-size:12px;font-weight:700;letter-spacing:1.1px;fill:#8fa5bc}.head{font-size:19px;font-weight:700}.body{font-size:14px;fill:#d4dfeb}.small{font-size:12px;fill:#b6c6d7}.tiny{font-size:11px;fill:#a8bacd}.box{stroke:#56708c;stroke-width:1.4}.pill{font-size:11px;font-weight:700;letter-spacing:.5px}.line{fill:none;stroke:#b5c7db;stroke-width:1.6;marker-end:url(#arrow)}.lineg{fill:none;stroke:#60d5b0;stroke-width:1.6;marker-end:url(#arrowGreen)}.dash{stroke-dasharray:7 6}
+    </style>
+  </defs>
+  <rect width="1600" height="1120" fill="url(#bg)"/>
+  <text x="64" y="68" class="title">Articulate · system architecture</text>
+  <text x="64" y="98" class="sub">React + TypeScript speaking coach · browser-local data · Gemini direct or Vertex AI through Cloud Run</text>
+  <rect x="64" y="122" width="1472" height="1" fill="#34475e"/>
+
+  <!-- Client -->
+  <rect x="64" y="158" width="810" height="542" rx="18" fill="url(#client)" class="box"/>
+  <text x="92" y="194" class="label">BROWSER · REACT 19 · TYPESCRIPT · VITE</text>
+  <text x="92" y="225" class="head">Articulate web client</text>
+  <rect x="92" y="246" width="352" height="174" rx="12" fill="#122d3b" stroke="#43818a"/>
+  <text x="114" y="275" class="label">PRACTICE UI</text>
+  <text x="114" y="306" class="body">Screens · Today, drills, roleplay, history,</text><text x="114" y="327" class="body">phrasebank, settings</text>
+  <text x="114" y="361" class="body">Recorder · attempt loop · scorecard · debrief</text>
+  <text x="114" y="390" class="small">src/screens · src/components · src/App.tsx</text>
+  <rect x="464" y="246" width="380" height="174" rx="12" fill="#122d3b" stroke="#43818a"/>
+  <text x="486" y="275" class="label">AUDIO + AI CLIENT</text>
+  <text x="486" y="306" class="body">AudioWorklet / getUserMedia</text>
+  <text x="486" y="329" class="body">mono PCM16 · 16 kHz in · WAV drills</text>
+  <text x="486" y="352" class="body">Gemini prompts + JSON schema + retries</text>
+  <text x="486" y="375" class="body">Live API · WebSocket relay adapter</text>
+  <text x="486" y="400" class="small">src/lib/audio.ts · gemini.ts · live.ts · engine.ts</text>
+  <rect x="92" y="444" width="752" height="104" rx="12" fill="#122d3b" stroke="#43818a"/>
+  <text x="114" y="472" class="label">LOCAL STATE · PER BROWSER · NO SERVER SYNC</text>
+  <text x="114" y="503" class="body">localStorage: settings · sessions / attempts · phrasebank · usage estimates</text>
+  <text x="114" y="527" class="small">Export/import backup in Settings · API key only used as a dev env fallback in development</text>
+  <rect x="92" y="572" width="752" height="88" rx="12" fill="#123a3a" stroke="#438d7b"/>
+  <text x="114" y="601" class="label" fill="#78e0c1">ENGINE SELECTOR</text>
+  <text x="114" y="630" class="body">auto = server when healthy, else direct Gemini · explicit server or gemini modes</text>
+  <text x="114" y="650" class="small">Settings: server URL + shared passcode, or personal Gemini API key + model choice</text>
+
+  <!-- Direct Gemini -->
+  <rect x="1095" y="166" width="440" height="200" rx="18" fill="url(#cloud)" class="box"/>
+  <text x="1123" y="201" class="label">OPTION A · DIRECT</text>
+  <text x="1123" y="234" class="head">Google Gemini API</text>
+  <text x="1123" y="267" class="body">Drill audio + structured feedback</text>
+  <text x="1123" y="291" class="body">Live roleplay audio stream</text>
+  <text x="1123" y="324" class="small">Browser key · per-user settings · Google AI Studio</text>
+  <text x="1123" y="347" class="small">Model fallback for busy / quota responses</text>
+  <path d="M844 330 C950 330 970 275 1095 275" class="line"/>
+  <rect x="884" y="286" width="166" height="26" rx="13" fill="#22384b"/><text x="967" y="304" text-anchor="middle" class="pill">GEMINI ENGINE</text>
+
+  <!-- Server -->
+  <rect x="1095" y="420" width="440" height="264" rx="18" fill="url(#server)" class="box"/>
+  <text x="1123" y="455" class="label">OPTION B · GOOGLE CLOUD RUN</text>
+  <text x="1123" y="488" class="head">Node 20 · Express 5 · ws</text>
+  <text x="1123" y="521" class="body">Serves static Vite dist + protects AI routes</text>
+  <text x="1123" y="550" class="body">GET  /api/health</text>
+  <text x="1123" y="576" class="body">POST /api/generate · JSON generation</text>
+  <text x="1123" y="602" class="body">WS   /api/live · realtime audio relay</text>
+  <text x="1123" y="637" class="small">APP_PASSCODE · timing-safe comparison · shared secret</text>
+  <text x="1123" y="660" class="small">server/index.mjs · Dockerfile · deploy-gcp.sh</text>
+  <path d="M844 615 C960 615 983 560 1095 560" class="lineg"/>
+  <rect x="870" y="573" width="202" height="26" rx="13" fill="#183e3d"/><text x="971" y="591" text-anchor="middle" class="pill" fill="#7de0bf">SERVER ENGINE · HTTPS / WSS</text>
+
+  <!-- Vertex -->
+  <rect x="1095" y="738" width="440" height="172" rx="18" fill="url(#cloud)" class="box"/>
+  <text x="1123" y="774" class="label">SERVER-SIDE AI PROVIDER</text>
+  <text x="1123" y="807" class="head">Vertex AI · Gemini</text>
+  <text x="1123" y="840" class="body">Cloud Run service account · no browser API key</text>
+  <text x="1123" y="867" class="small">Coach endpoint: global · configurable live candidates/fallback</text>
+  <path d="M1315 684 L1315 738" class="line"/>
+
+  <!-- Process and deployment -->
+  <rect x="64" y="748" width="810" height="162" rx="18" fill="#1b293c" class="box"/>
+  <text x="92" y="784" class="label">CORE DATA FLOW</text>
+  <text x="92" y="820" class="body">1  Capture → 16 kHz PCM → WAV/base64 (drill) or realtime PCM (roleplay)</text>
+  <text x="92" y="850" class="body">2  Gemini returns feedback JSON / live audio + transcript events</text>
+  <text x="92" y="880" class="body">3  Client renders coaching → computes pace/fillers → saves locally</text>
+  <rect x="924" y="948" width="612" height="104" rx="14" fill="#1b293c" stroke="#53657c"/>
+  <text x="950" y="979" class="label">DEPLOYMENT TARGETS</text>
+  <text x="950" y="1008" class="body">Amplify = static `dist` ZIP · no AI server</text>
+  <text x="1250" y="1008" class="body">Cloud Run = client + Vertex relay</text>
+  <path d="M1305 910 L1305 948" class="line"/>
+  <path d="M444 700 L444 748" class="line dash"/>
+
+  <text x="64" y="1082" class="tiny">Build: npm ci · npm run build   |   Data remains browser-local   |   HTTPS required for microphone outside localhost</text>
+</svg>

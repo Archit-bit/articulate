@@ -1,0 +1,8 @@
+node_modules
+server/node_modules
+dist
+.env.local
+*.local
+articulate-site.zip
+articulate-gcp.zip
+.DS_Store
